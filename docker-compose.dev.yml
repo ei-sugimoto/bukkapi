@@ -1,0 +1,25 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - .:/app
+    ports:
+      - '8080:8080'
+    depends_on:
+      - db
+
+  db:
+    image: mysql:latest
+    environment:
+      mysql_USER: bukka
+      mysql_PASSWORD: bukka
+      mysql_DB: bukka
+    ports:
+      - '5432:5432'
+    volumes:
+      - mysql-data:/var/lib/mysql/data
+
+volumes:
+  mysql-data:
