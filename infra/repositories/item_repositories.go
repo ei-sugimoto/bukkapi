@@ -18,7 +18,8 @@ func NewItemRepository(db *gorm.DB) repositories.ItemRepository {
 }
 
 func (i *ItemRepositoryImp) List(c context.Context) (*[]entities.Item, error) {
-	var items []models.ItemModel
+	var items []models.Item
+
 	if err := i.DB.Find(&items); err != nil {
 		return nil, err.Error
 	}
@@ -35,8 +36,8 @@ func (i *ItemRepositoryImp) Create(c context.Context, item *entities.Item) error
 	return nil
 }
 
-func (i *ItemRepositoryImp) formEntity(e *entities.Item) *models.ItemModel {
-	return &models.ItemModel{
+func (i *ItemRepositoryImp) formEntity(e *entities.Item) *models.Item {
+	return &models.Item{
 		Name: e.Name,
 	}
 }

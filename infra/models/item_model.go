@@ -1,6 +1,13 @@
 package models
 
-type ItemModel struct {
-	ID   int    `gorm:"primaryKey;autoIncrement"`
-	Name string `gorm:"size:100;not null"`
+import "gorm.io/gorm"
+
+type Item struct {
+	gorm.Model
+	Name string
+}
+
+// TableName sets the insert table name for this struct type
+func (Item) TableName() string {
+	return "items"
 }
