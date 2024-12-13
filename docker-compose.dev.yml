@@ -13,13 +13,14 @@ services:
   db:
     image: mysql:latest
     environment:
-      mysql_USER: bukka
-      mysql_PASSWORD: bukka
-      mysql_DB: bukka
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_USER: bukka
+      MYSQL_PASSWORD: bukka
+      MYSQL_DATABASE: bukka
     ports:
       - '5432:5432'
     volumes:
-      - mysql-data:/var/lib/mysql/data
+      - mysql-data:/var/lib/mysql
 
 volumes:
   mysql-data:
